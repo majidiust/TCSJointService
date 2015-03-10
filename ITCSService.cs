@@ -13,12 +13,15 @@ namespace TCSAService
     {
 
         [OperationContract]
-        void InsertTraffic(String trafficId, String takenDate, String takenTime, String persianPlate, String agentCode);
+        void InsertTraffic(String trafficId, String sequenceNumber, String takenDate, String takenTime, String persianPlate, String agentCode);
 
         [OperationContract]
         void updateTraffic(String trafficId, String persianPlate);
 
         [OperationContract]
         void changeTrafficStatus(String trafficId, Boolean status);
+
+        [OperationContract]
+        void setSequenceNumber(String trafficId, String sequenceNumber);
     }
 }

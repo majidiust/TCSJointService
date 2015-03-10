@@ -39,7 +39,7 @@ namespace TCSAService.Model
     #endregion
 		
 		public DatabaseDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["TCSConnectionString"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["TCSConnectionString1"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -284,7 +284,7 @@ namespace TCSAService.Model
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.traffic")]
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Traffic")]
 	public partial class Traffic : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -309,6 +309,8 @@ namespace TCSAService.Model
 		private System.Nullable<bool> _state;
 		
 		private System.Nullable<System.DateTime> _lastModifiedDate;
+		
+		private string _sequenceNumber;
 		
 		private EntitySet<ActionLog> _ActionLogs;
 		
@@ -336,6 +338,8 @@ namespace TCSAService.Model
     partial void OnstateChanged();
     partial void OnlastModifiedDateChanging(System.Nullable<System.DateTime> value);
     partial void OnlastModifiedDateChanged();
+    partial void OnsequenceNumberChanging(string value);
+    partial void OnsequenceNumberChanged();
     #endregion
 		
 		public Traffic()
@@ -540,6 +544,26 @@ namespace TCSAService.Model
 					this._lastModifiedDate = value;
 					this.SendPropertyChanged("lastModifiedDate");
 					this.OnlastModifiedDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sequenceNumber", DbType="NVarChar(50)")]
+		public string sequenceNumber
+		{
+			get
+			{
+				return this._sequenceNumber;
+			}
+			set
+			{
+				if ((this._sequenceNumber != value))
+				{
+					this.OnsequenceNumberChanging(value);
+					this.SendPropertyChanging();
+					this._sequenceNumber = value;
+					this.SendPropertyChanged("sequenceNumber");
+					this.OnsequenceNumberChanged();
 				}
 			}
 		}

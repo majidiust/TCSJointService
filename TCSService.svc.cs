@@ -13,7 +13,7 @@ namespace TCSAService
        public class TCSService : ITCSService
     {
 
-        public void InsertTraffic(string trafficId, string takenDate, string takenTime, string persianPlate, string agentCode)
+        public void InsertTraffic(string trafficId, string sequenceNumber, string takenDate, string takenTime, string persianPlate, string agentCode)
         {
             try
             {
@@ -27,6 +27,7 @@ namespace TCSAService
                     traffic.detectedPlatePersian = persianPlate;
                     traffic.insertDate = DateTime.Now;
                     traffic.state = true;
+                    traffic.sequenceNumber = sequenceNumber;
                     db.Traffics.InsertOnSubmit(traffic);
                     db.SubmitChanges();
                 }
@@ -94,6 +95,40 @@ namespace TCSAService
                     actionLog.lastValue = String.Format("{0}", traffic.state);
                     db.ActionLogs.InsertOnSubmit(actionLog);
                     traffic.state = status;
+                    traffic.lastModifiedDate = DateTime.Now;
+                    db.SubmitChanges();
+                }
+                else
+                {
+                    OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                    response.StatusCode = HttpStatusCode.NoContent;
+                    response.StatusDescription = "traffic with specific id does not exist";
+                }
+            }
+            catch (Exception ex)
+            {
+                OutgoingWebResponseContext response = WebOperationContext.Current.OutgoingResponse;
+                response.StatusCode = HttpStatusCode.InternalServerError;
+                response.StatusDescription = ex.Message;
+            }
+        }
+
+
+        public void setSequenceNumber(string trafficId, string sequenceNumber)
+        {
+            try
+            {
+                DatabaseDataContext db = new DatabaseDataContext();
+                if (db.Traffics.Count(P => P.recordId.Equals(trafficId)) > 0)
+                {
+                    Traffic traffic = db.Traffics.Single(P => P.recordId.Equals(trafficId));
+                    ActionLog actionLog = new ActionLog();
+                    actionLog.action = "change sequence number";
+                    actionLog.date = DateTime.Now;
+                    actionLog.recordId = traffic.Id;
+                    actionLog.lastValue = traffic.sequenceNumber;
+                    db.ActionLogs.InsertOnSubmit(actionLog);
+                    traffic.sequenceNumber = sequenceNumber;
                     traffic.lastModifiedDate = DateTime.Now;
                     db.SubmitChanges();
                 }

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="TCS" Class="DatabaseDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=MSA;Initial Catalog=TCS;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="TCSConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=MSA;Initial Catalog=TCS;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="TCSConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.actionLog" Member="ActionLogs">
     <Type Name="ActionLog">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -10,7 +10,7 @@
       <Association Name="Traffic_ActionLog" Member="Traffic" ThisKey="recordId" OtherKey="Id" Type="Traffic" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.traffic" Member="Traffics">
+  <Table Name="dbo.Traffic" Member="Traffics">
     <Type Name="Traffic">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="insertDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -22,6 +22,7 @@
       <Column Name="agentId" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="state" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="lastModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="sequenceNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="Traffic_ActionLog" Member="ActionLogs" ThisKey="Id" OtherKey="recordId" Type="ActionLog" />
     </Type>
   </Table>

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Database">
+  <DataContextMoniker Name="/DatabaseDataContext" />
+  <nestedChildShapes>
+    <classShape Id="360c624a-d565-45aa-8152-d6b5d618bf6d" absoluteBounds="3.5, 1.5, 2, 1.7708968098958333">
+      <DataClassMoniker Name="/DatabaseDataContext/ActionLog" />
+      <nestedChildShapes>
+        <elementListCompartment Id="011f533c-d14d-48b7-ac71-a631b78979df" absoluteBounds="3.515, 1.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="fea4737c-47f4-4057-9074-3c84f4ef365d" absoluteBounds="0.75, 1, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/DatabaseDataContext/Traffic" />
+      <nestedChildShapes>
+        <elementListCompartment Id="22f304fa-1e62-4910-a5de-3e4c5d3bc7b5" absoluteBounds="0.765, 1.46, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 2.38544840494792); (3.5 : 2.38544840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DatabaseDataContext/Traffic/Traffic_ActionLog" />
+      <nodes>
+        <classShapeMoniker Id="fea4737c-47f4-4057-9074-3c84f4ef365d" />
+        <classShapeMoniker Id="360c624a-d565-45aa-8152-d6b5d618bf6d" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

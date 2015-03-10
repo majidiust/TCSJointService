@@ -1,0 +1,6 @@
+C:\Users\Majid\Documents\Visual Studio 2013\Projects\TCSAService\TCSAService\bin\TCSAService.dll.config
+C:\Users\Majid\Documents\Visual Studio 2013\Projects\TCSAService\TCSAService\bin\TCSAService.dll
+C:\Users\Majid\Documents\Visual Studio 2013\Projects\TCSAService\TCSAService\bin\TCSAService.pdb
+C:\Users\Majid\Documents\Visual Studio 2013\Projects\TCSAService\TCSAService\obj\Debug\TCSAService.csprojResolveAssemblyReference.cache
+C:\Users\Majid\Documents\Visual Studio 2013\Projects\TCSAService\TCSAService\obj\Debug\TCSAService.dll
+C:\Users\Majid\Documents\Visual Studio 2013\Projects\TCSAService\TCSAService\obj\Debug\TCSAService.pdb
